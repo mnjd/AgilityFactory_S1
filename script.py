@@ -1,3 +1,7 @@
+#!/Library/Frameworks/Python.framework/Versions/3.6/bin/python3.6
+#!/usr/bin env python
+# -*- coding: utf-8 -*-
+
 import psycopg2
 import datetime
 import time
