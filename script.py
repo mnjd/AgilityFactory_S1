@@ -1,5 +1,6 @@
 import psycopg2
 import datetime
+import time
 from lxml import html
 import requests
 
@@ -21,10 +22,13 @@ except:
     print("Unexpected error")
     raise
 
+
 if conn:
-    conn.rollback()
-    cur = conn.cursor()
-    cur.execute("INSERT INTO followers VALUES (%s, %s);", (ts, followers_number))
-    print('Table updated')
-    conn.commit()
+    for i in range(86400):
+         conn.rollback()
+         cur = conn.cursor()
+         cur.execute("INSERT INTO followers VALUES (%s, %s);", (ts, followers_number))
+         print('Table updated')
+         conn.commit()
+         time.sleep(3600)
     conn.close()
